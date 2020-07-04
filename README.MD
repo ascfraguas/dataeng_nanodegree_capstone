@@ -1,7 +1,7 @@
 # Data Engineering NanoDegree: Capstone project
 
 In this project, I design a fully automated ETL process leveraging Airflow, Pandas, 
-AWS (I.e. s3 + Redshift) and Dask as core technologies.
+AWS (i.e. s3 + Redshift) and Dask as core technologies.
 
 ![title](img/technological_stack.PNG)
 
@@ -28,7 +28,10 @@ climate in these movements.
 
 The project contains the following resources, which will be referenced in the following sections:
 
-- **`airflow` directory**: Contains all the code for our automated ETL pipeline
+- **`airflow` directory**: Contains all the code for our automated ETL pipeline. Within this directory
+	- **`airflow/dags/etl.py`**: Airflow code for the pipeline DAG
+	- **`airflow/plugings/operators/`**: Custom operators defined for the different tasks of the DAG
+	- **`airflow/plugings/helpers/`**: SQL code and data mappings
 - **`ETL walkthrough.ipynb`**: Notebook depicting the ETL steps and showing methods, intermediate results and code base
 - **`additional_resources/data_dictionary.md`**: Data dictionary containing descriptions of all tables in our data model - described ahead in section 4
 ---
@@ -94,7 +97,7 @@ The 5 blocks are the following:
 1. **Create data model**: The schemas and tables described in section 3 are created
 2. **Stage data**: Data is preprocessed and moved into the staging area in s3
 3. **Copy data**: Curated data is copied into Redshift tables, and additional tables are created through transformations
-4. **Run DQ checks**: Data quality checks are ran to ensure that the tables have been correctly created
+4. **Run DQ checks**: Data quality checks are run to ensure that the tables have been correctly created
 5. **Run data analyses**: The necessary queries to generate the contents of the `outputs` schema are ran.
 
 Technical documentation around these tasks and choices made can be found at `ETL walkthrough.ipynb`.
